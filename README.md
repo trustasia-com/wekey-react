@@ -9,7 +9,7 @@ npm i trustasia-custom-component
 ## 使用示例
 
 ```demo
-import { WeKeyQrcode } from 'trustasia-custom-component';
+import { WeKeyQrcode } from '@trustasia/wekey-react';
 // css 文件中引入
 @import '@trustasia/wekey-react/dist/wekey-react.cjs.development.css';
 
