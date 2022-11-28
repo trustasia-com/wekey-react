@@ -11,7 +11,7 @@ npm i trustasia-custom-component
 ```demo
 import { WeKeyQrcode } from 'trustasia-custom-component';
 // css 文件中引入
-@import 'trustasia-custom-component/dist/trustasia-custom-component.cjs.development.css';
+@import '@trustasia/wekey-react/dist/wekey-react.cjs.development.css';
 
 <WeKeyQrcode
   getImgApi='/ta-demo/wekey/register/qrcode'
