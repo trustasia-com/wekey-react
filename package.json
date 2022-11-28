@@ -37,8 +37,8 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "trustasia-qrcode",
-  "author": "Rikki.Cao",
+  "name": "wekey-react",
+  "author": "cp-apple",
   "module": "dist/custom-component.esm.js",
   "size-limit": [
     {
