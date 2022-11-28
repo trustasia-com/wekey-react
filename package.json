@@ -19,10 +19,6 @@
     "size": "size-limit",
     "analyze": "size-limit --why"
   },
-  "publishConfig": {
-    "registry": "https://www.npmjs.com/settings/trustasia/teams/team/developers/access",
-    "access": "public"
-  },
   "peerDependencies": {
     "react": ">=16"
   },
