@@ -97,7 +97,7 @@ const WeKeyQrcode = ({ ewmParams, successCallback, getImgApi, getQrcodeResultApi
         setResultData(res.data.data);
         if (res.data.data.status == 'success') {
           clearTimeout(timer);
-          if (successCallback) successCallback()
+          if (successCallback) successCallback(res.data.data)
         }
         if (res.data.data.status == 'fail' || res.data.data.status == "timeout") {
           setIsOut(true);
