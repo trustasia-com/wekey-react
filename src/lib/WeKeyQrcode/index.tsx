@@ -67,9 +67,12 @@ const WeKeyQrcode = ({ ewmParams, successCallback, getImgApi, getQrcodeResultApi
         }).catch((err: any) => {
           console.log(err);
         })
+      } else {
+        message.error(res.data.data.error);
       }
     }).catch(err => {
       console.log(err);
+      message.error(err.response.data.error || '服务器内部错误，请联系管理员');
       setImgLoading(false);
     })
   };
@@ -106,9 +109,11 @@ const WeKeyQrcode = ({ ewmParams, successCallback, getImgApi, getQrcodeResultApi
         }
       } else {
         clearTimeout(timer);
+        message.error(res.data.data.error);
       }
     }).catch((err: any) => {
       console.log(err);
+      message.error(err.response.data.error || '服务器内部错误，请联系管理员');
       clearTimeout(timer);
     });
   };
