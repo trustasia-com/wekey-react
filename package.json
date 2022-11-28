@@ -33,7 +33,7 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "wekey-react",
+  "name": "@trustasia/wekey-react",
   "author": "cp-apple",
   "module": "dist/custom-component.esm.js",
   "size-limit": [
