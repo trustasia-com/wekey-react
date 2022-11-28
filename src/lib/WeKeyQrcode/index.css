@@ -1,0 +1,72 @@
+.wekey_qrcode_box {
+  text-align: center;
+}
+
+.wekey_qrcode_box .desc_tip {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.wekey_qrcode_box .desc_tip .icon {
+  margin-right: 4px;
+  color: #52c41a;
+}
+
+.wekey_qrcode_box .ewm_box {
+  position: relative;
+  margin: 0 auto;
+  width: 160px;
+  height: 160px;
+  border-radius: 4px;
+  border: 1px solid #eee;
+  overflow: hidden;
+}
+
+.wekey_qrcode_box .ewm_box img {
+  width: 100%;
+  height: 100%;
+}
+
+.wekey_qrcode_box .ewm_box .mask_box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, .4);
+  color: #fff;
+  cursor: pointer;
+}
+
+.wekey_qrcode_box .ewm_box .mask_box .icon {
+  margin-bottom: 8px;
+  font-size: 48px;
+}
+
+.wekey_qrcode_box .ewm_box .mask_box p {
+  margin: 0;
+  font-size: 12px;
+}
+
+.wekey_qrcode_box .tip {
+  margin-top: 12px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.wekey_qrcode_box .tip .icon {
+  margin-right: 4px;
+  color: #52c41a;
+}
