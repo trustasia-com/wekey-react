@@ -19,6 +19,10 @@
     "size": "size-limit",
     "analyze": "size-limit --why"
   },
+  "publishConfig": {
+    "registry": "https://www.npmjs.com/settings/trustasia/teams/team/developers/access",
+    "access": "public"
+  },
   "peerDependencies": {
     "react": ">=16"
   },
@@ -33,7 +37,7 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "trustasia-custom-component",
+  "name": "trustasia-qrcode",
   "author": "Rikki.Cao",
   "module": "dist/custom-component.esm.js",
   "size-limit": [
