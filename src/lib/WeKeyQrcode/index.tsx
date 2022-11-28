@@ -44,9 +44,7 @@ const WeKeyQrcode = ({ ewmParams, successCallback, getImgApi, getQrcodeResultApi
   // 获取扫码登录的二维码
   const getQRcodeFn = async () => {
     setImgLoading(true);
-    axios.post(`${getImgApi}`, {
-      data: ewmParams
-    }).then((res: any) => {
+    axios.post(`${getImgApi}`, ewmParams).then((res: any) => {
       setImgLoading(false);
       if (res.data.code == 0) {
         QRcode.toDataURL(res.data.data.url, {
