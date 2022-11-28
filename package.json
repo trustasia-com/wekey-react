@@ -73,5 +73,21 @@
     "qrcode": "~1.5.1",
     "rollup-plugin-postcss": "~4.0.2",
     "sass": "^1.56.1"
-  }
+  },
+  "description": "``` install yarn add trustasia-custom-component 或",
+  "directories": {
+    "example": "example",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trustasia-com/wekey-react.git"
+  },
+  "keywords": [
+    "wekey"
+  ],
+  "bugs": {
+    "url": "https://github.com/trustasia-com/wekey-react/issues"
+  },
+  "homepage": "https://github.com/trustasia-com/wekey-react#readme"
 }
