@@ -5,15 +5,20 @@ import { WeKeyQrcode } from '../src/index';
 
 const App = () => {
   return (
-    <WeKeyQrcode
-      getImgApi="/ta-demo/wekey/login/qrcode"
-      ewmParams={{ email: '401240139@qq.com' }}
-      getQrcodeResultApi="/ta-demo/wekey/login/result"
-      successCallback={() => {
-        alert('扫码成功！！！！！');
-      }}
-      showResult={false}
-    />
+    <div>
+      <WeKeyQrcode
+        getImgApi="/weet/api/wekey/qrcode"
+        timeDelay={3}
+        ewmParams={{
+          user_name: 'rikki.cao',
+        }}
+        getQrcodeResultApi="/weet/api/wekey/is-login"
+        successCallback={() => {
+          alert('success')
+        }}
+        showResult={false}
+      />
+    </div>
   );
 };
 
