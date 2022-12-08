@@ -104,7 +104,7 @@ const WeKeyQrcode = ({ ewmParams, successCallback, getImgApi, getQrcodeResultApi
         }
         if (res.data.data.status == 'fail' || res.data.data.status == "timeout") {
           setIsOut(true);
-          message.error('认证失败');
+          message.error(res.data.data.error || '认证失败');
           clearTimeout(timer);
         }
       } else {
