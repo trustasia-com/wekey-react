@@ -1,9 +1,9 @@
 # WeKey扫码组件使用说明
 
 ``` install
-yarn add trustasia-custom-component 或
+yarn add @trustasia/wekey-react 或
 
-npm i trustasia-custom-component
+npm i @trustasia/wekey-react
 ```
 
 ## 使用示例

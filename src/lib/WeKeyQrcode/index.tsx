@@ -1,3 +1,4 @@
+// WeKey 扫码
 import React, { useEffect, useState } from 'react';
 import { Spin, message, Result } from 'antd';
 import {
@@ -46,8 +47,8 @@ const WeKeyQrcode = ({ ewmParams, successCallback, getImgApi, getQrcodeResultApi
     setImgLoading(true);
     axios.post(`${getImgApi}`, ewmParams).then((res: any) => {
       setImgLoading(false);
-      if (res.data.code == 0) {
-        QRcode.toDataURL(res.data.data.url, {
+      if (res?.data?.code == 0) {
+        QRcode.toDataURL(res?.data?.data?.url, {
           type: "image/png", //类型
           quality: 0.5, //图片质量A Number between 0 and 1
           width: 160, //高度
@@ -59,20 +60,20 @@ const WeKeyQrcode = ({ ewmParams, successCallback, getImgApi, getQrcodeResultApi
             light: "#ffffff" //背景色
           }
         }).then((imgData: any) => {
-          getqrResult(res.data.data);
+          getqrResult(res?.data?.data);
           setQrImgData({
-            ...res.data.data,
+            ...(res?.data?.data || {}),
             imgUrl: imgData
           })
         }).catch((err: any) => {
           console.log(err);
         })
       } else {
-        message.error(res.data.error);
+        message.error(res?.data?.error);
       }
     }).catch(err => {
       console.log(err);
-      message.error(err.response.data.error || '服务器内部错误，请联系管理员');
+      message.error(err?.response?.data?.error || '服务器内部错误，请联系管理员');
       setImgLoading(false);
     })
   };
@@ -82,14 +83,14 @@ const WeKeyQrcode = ({ ewmParams, successCallback, getImgApi, getQrcodeResultApi
     clearTimeout(timer);
     axios.get(`${getQrcodeResultApi}`, {
       params: {
-        msg_id: data.url.substr(data.url.indexOf('#') + 1)
+        msg_id: data?.url.substr(data.url.indexOf('#') + 1)
       }
     }).then((res: any) => {
-      if (res.data.code == 0) {
-        if (res.data.data.status === 'init' || res.data.data.status === 'bind') {
+      if (res?.data?.code == 0) {
+        if (res?.data?.data.status === 'init' || res?.data?.data?.status === 'bind') {
           setIsOut(false);
           timer = setTimeout(() => {
-            if (data.expires_at * 1000 - new Date().getTime() < 0) {
+            if (data?.expires_at * 1000 - new Date().getTime() < 0) {
               setIsOut(true);
               clearTimeout(timer);
               return;
@@ -97,23 +98,23 @@ const WeKeyQrcode = ({ ewmParams, successCallback, getImgApi, getQrcodeResultApi
             getqrResult(data)
           }, (timeDelay ? (timeDelay < 1 ? 1 : timeDelay) : 3) * 1000);
         }
-        setResultData(res.data.data);
-        if (res.data.data.status == 'success') {
+        setResultData(res?.data?.data);
+        if (res?.data?.data?.status == 'success') {
           clearTimeout(timer);
-          if (successCallback) successCallback(res.data.data)
+          if (successCallback) successCallback(res?.data?.data)
         }
-        if (res.data.data.status == 'fail' || res.data.data.status == "timeout") {
+        if (res?.data?.data?.status == 'fail' || res?.data?.data?.status == "timeout") {
           setIsOut(true);
-          message.error(res.data.data.error || '认证失败');
+          message.error(res?.data?.data?.error || '认证失败');
           clearTimeout(timer);
         }
       } else {
         clearTimeout(timer);
-        message.error(res.data.error);
+        message.error(res?.data?.error);
       }
     }).catch((err: any) => {
       console.log(err);
-      message.error(err.response.data.error || '服务器内部错误，请联系管理员');
+      message.error(err.response?.data?.error || '服务器内部错误，请联系管理员');
       clearTimeout(timer);
     });
   };
