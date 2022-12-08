@@ -1,6 +1,3 @@
-import * as React from 'react';
+import WeKeyQrcode from './lib/WeKeyQrcode/index';
 
-// Delete me
-export const Thing = () => {
-  return <div>the snozzberries taste like snozzberries</div>;
-};
+export { WeKeyQrcode };
