@@ -149,7 +149,7 @@ const WeKeyQrcode = ({
   };
 
   return (
-    <div className={'wekey_qrcode_box'}>
+    <div className='wekey_qrcode_box'>
       {showResult && (
         <Result
           status={resultData?.status === 'success' ? 'success' : 'error'}
