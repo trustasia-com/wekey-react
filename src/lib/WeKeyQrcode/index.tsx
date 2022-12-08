@@ -68,7 +68,7 @@ const WeKeyQrcode = ({ ewmParams, successCallback, getImgApi, getQrcodeResultApi
           console.log(err);
         })
       } else {
-        message.error(res.data.data.error);
+        message.error(res.data.error);
       }
     }).catch(err => {
       console.log(err);
@@ -109,7 +109,7 @@ const WeKeyQrcode = ({ ewmParams, successCallback, getImgApi, getQrcodeResultApi
         }
       } else {
         clearTimeout(timer);
-        message.error(res.data.data.error);
+        message.error(res.data.error);
       }
     }).catch((err: any) => {
       console.log(err);
