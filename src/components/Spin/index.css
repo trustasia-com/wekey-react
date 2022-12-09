@@ -1,0 +1,43 @@
+.spin_box {
+  position: relative;
+}
+
+.spin_mask_box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #1890ff;
+  background-color: rgba(255, 255, 255, .6);
+}
+
+.loading_icon {
+  width: 30px;
+  margin: 0 auto 5px;
+  animation: antRotate 1.2s infinite linear;
+}
+
+.loading_tip {
+  margin-bottom: 0;
+  text-shadow: 0 1px 2px #fff;
+}
+
+@-webkit-keyframes antRotate {
+  to {
+    -webkit-transform: rotate(405deg);
+    transform: rotate(405deg);
+  }
+}
+
+@keyframes antRotate {
+  to {
+    -webkit-transform: rotate(405deg);
+    transform: rotate(405deg);
+  }
+}

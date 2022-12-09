@@ -1,9 +1,11 @@
 // WeKey 扫码
 import React, { useEffect, useState } from 'react';
-import { Spin, message, Result } from 'antd';
+import { message, Result } from 'antd';
 import { ReloadOutlined, CheckCircleFilled } from '@ant-design/icons';
 import axios from 'axios';
 import QRcode from 'qrcode';
+import { Spin } from '../../components/Spin'
+import 'antd/dist/antd.css';
 import './index.css';
 
 let timer: any;
@@ -163,7 +165,7 @@ const WeKeyQrcode = ({
             {isOut && (
               <div className="mask_box" onClick={() => reloadEwm()}>
                 <Spin spinning={imgLoading} tip="加载中...">
-                  <ReloadOutlined className="icon" />
+                  <img className='icon' src={require('../../images/reload.png')} alt="点击刷新" />
                   <p>超时，点击刷新</p>
                 </Spin>
               </div>
