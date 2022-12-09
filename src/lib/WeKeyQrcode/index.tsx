@@ -1,7 +1,6 @@
 // WeKey 扫码
 import React, { useEffect, useState } from 'react';
 import { message, Result } from 'antd';
-import { ReloadOutlined, CheckCircleFilled } from '@ant-design/icons';
 import axios from 'axios';
 import QRcode from 'qrcode';
 import { Spin } from '../../components/Spin'
@@ -171,13 +170,13 @@ const WeKeyQrcode = ({
               </div>
             )}
             {qrImgData && (
-              <img src={qrImgData.imgUrl} alt="" width={160} height={160} />
+              <img src={qrImgData?.imgUrl} alt="" width={160} height={160} />
             )}
           </div>
           <p className="desc_tip">
             {resultData?.wekey_user ? (
               <>
-                <CheckCircleFilled className="icon" />
+                <img className='icon' src={require('../../images/check.png')} alt="点击刷新" />
                 <span>{resultData.wekey_user + '已扫码'}</span>
               </>
             ) : (
