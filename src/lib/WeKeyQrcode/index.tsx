@@ -58,32 +58,36 @@ const WeKeyQrcode = ({
       },
     })
       .then((res: any) => {
-        setImgLoading(false);
-        if (res?.data?.code == 0) {
-          QRcode.toDataURL(res?.data?.data?.url, {
-            type: 'image/png', //类型
-            quality: 0.5, //图片质量A Number between 0 and 1
-            width: 160, //高度
-            height: 160, //宽度
-            errorCorrectionLevel: 'L', //容错率
-            margin: 1, //外边距
-            color: {
-              dark: '#000000', //前景色
-              light: '#ffffff', //背景色
-            },
-          })
-            .then((imgData: any) => {
-              getqrResult(res?.data?.data);
-              setQrImgData({
-                ...(res?.data?.data || {}),
-                imgUrl: imgData,
-              });
+        if (res.ok) {
+          setImgLoading(false);
+          if (res?.data?.code == 0) {
+            QRcode.toDataURL(res?.data?.data?.url, {
+              type: 'image/png', //类型
+              quality: 0.5, //图片质量A Number between 0 and 1
+              width: 160, //高度
+              height: 160, //宽度
+              errorCorrectionLevel: 'L', //容错率
+              margin: 1, //外边距
+              color: {
+                dark: '#000000', //前景色
+                light: '#ffffff', //背景色
+              },
             })
-            .catch((err: any) => {
-              console.log(err);
-            });
+              .then((imgData: any) => {
+                getqrResult(res?.data?.data);
+                setQrImgData({
+                  ...(res?.data?.data || {}),
+                  imgUrl: imgData,
+                });
+              })
+              .catch((err: any) => {
+                console.log(err);
+              });
+          } else {
+            message.error(res?.data?.error);
+          }
         } else {
-          message.error(res?.data?.error);
+          message.error(res.statusText || '服务器内部错误，请联系管理员')
         }
       })
       .catch(err => {
@@ -105,37 +109,41 @@ const WeKeyQrcode = ({
       },
     })
       .then((res: any) => {
-        if (res?.data?.code == 0) {
-          if (
-            res?.data?.data.status === 'init' ||
-            res?.data?.data?.status === 'bind'
-          ) {
-            setIsOut(false);
-            timer = setTimeout(() => {
-              if (data?.expires_at * 1000 - new Date().getTime() < 0) {
-                setIsOut(true);
-                clearTimeout(timer);
-                return;
-              }
-              getqrResult(data);
-            }, (timeDelay ? (timeDelay < 1 ? 1 : timeDelay) : 3) * 1000);
-          }
-          setResultData(res?.data?.data);
-          if (res?.data?.data?.status == 'success') {
+        if (res.ok) {
+          if (res?.data?.code == 0) {
+            if (
+              res?.data?.data.status === 'init' ||
+              res?.data?.data?.status === 'bind'
+            ) {
+              setIsOut(false);
+              timer = setTimeout(() => {
+                if (data?.expires_at * 1000 - new Date().getTime() < 0) {
+                  setIsOut(true);
+                  clearTimeout(timer);
+                  return;
+                }
+                getqrResult(data);
+              }, (timeDelay ? (timeDelay < 1 ? 1 : timeDelay) : 3) * 1000);
+            }
+            setResultData(res?.data?.data);
+            if (res?.data?.data?.status == 'success') {
+              clearTimeout(timer);
+              if (successCallback) successCallback(res?.data?.data);
+            }
+            if (
+              res?.data?.data?.status == 'fail' ||
+              res?.data?.data?.status == 'timeout'
+            ) {
+              setIsOut(true);
+              message.error(res?.data?.data?.error || '认证失败');
+              clearTimeout(timer);
+            }
+          } else {
             clearTimeout(timer);
-            if (successCallback) successCallback(res?.data?.data);
-          }
-          if (
-            res?.data?.data?.status == 'fail' ||
-            res?.data?.data?.status == 'timeout'
-          ) {
-            setIsOut(true);
-            message.error(res?.data?.data?.error || '认证失败');
-            clearTimeout(timer);
+            message.error(res?.data?.error);
           }
         } else {
-          clearTimeout(timer);
-          message.error(res?.data?.error);
+          message.error(res.statusText || '服务器内部错误，请联系管理员')
         }
       })
       .catch((err: any) => {

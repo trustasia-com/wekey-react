@@ -1,7 +1,7 @@
 import React, { forwardRef, useImperativeHandle, useState } from 'react';
 import './messageComponent.css';
 
-const MessageComponent = (props: any, ref: any) => {
+const MessageComponent = (_: any, ref: any) => {
   //将以下方法暴露给父组件
   useImperativeHandle(ref, () => ({
     create,
