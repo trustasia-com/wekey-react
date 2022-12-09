@@ -1,0 +1,30 @@
+.message_box {
+  position: fixed;
+  left: 50%;
+  top: 16px;
+  transform: translate3d(-50%, 0, 0);
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+  pointer-events: all;
+  animation: moveIn 0.3s;
+}
+.message_box .icon{
+  width: 16px;
+  margin-right: 8px;
+}
+@keyframes moveIn {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+
+  100% {
+    top: 16px;
+    opacity: 1;
+  }
+}
+

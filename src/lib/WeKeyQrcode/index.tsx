@@ -1,11 +1,10 @@
 // WeKey 扫码
 import React, { useEffect, useState } from 'react';
-import { message } from 'antd';
 import axios from 'axios';
 import QRcode from 'qrcode';
 import Spin from '../../components/Spin';
 import Result from '../../components/Result';
-import 'antd/dist/antd.css';
+import message from '../../components/Message'
 import './index.css';
 
 let timer: any;
