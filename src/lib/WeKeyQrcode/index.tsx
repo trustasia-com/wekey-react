@@ -1,6 +1,5 @@
 // WeKey 扫码
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import QRcode from 'qrcode';
 import Spin from '../../components/Spin';
 import Result from '../../components/Result';
@@ -51,8 +50,13 @@ const WeKeyQrcode = ({
   // 获取扫码登录的二维码
   const getQRcodeFn = async () => {
     setImgLoading(true);
-    axios
-      .post(`${getImgApi}`, ewmParams)
+    await fetch(`${getImgApi}`, {
+      method: 'POST',
+      body: ewmParams,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
       .then((res: any) => {
         setImgLoading(false);
         if (res?.data?.code == 0) {
@@ -94,12 +98,12 @@ const WeKeyQrcode = ({
   // 获取二维码扫码结果
   const getqrResult = async (data: any) => {
     clearTimeout(timer);
-    axios
-      .get(`${getQrcodeResultApi}`, {
-        params: {
-          msg_id: data?.url.substr(data.url.indexOf('#') + 1),
-        },
-      })
+    await fetch(`${getQrcodeResultApi}?msg_id=${data?.url.substr(data.url.indexOf('#') + 1)}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
       .then((res: any) => {
         if (res?.data?.code == 0) {
           if (
