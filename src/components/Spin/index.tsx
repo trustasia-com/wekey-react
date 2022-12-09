@@ -2,7 +2,12 @@
 import React from 'react';
 import './index.css';
 
-const Spin = (props: any) => {
+interface SpinProps {
+  children?: any;
+  spinning: boolean;
+  tip?: string;
+}
+const Spin = (props: SpinProps) => {
   return (
     <div className='spin_box'>
       {props.children}
@@ -10,10 +15,10 @@ const Spin = (props: any) => {
         props.spinning &&
         <div className='spin_mask_box'>
           <img className='loading_icon' src={require('../../images/loading.png')} alt={props.tip} />
-          <p className='loading_tip'>{props.tip}</p>
+          {props.tip && <p className='loading_tip'>{props.tip}</p>}
         </div>
       }
     </div>
   )
 }
-export { Spin };
+export default Spin;

@@ -1,0 +1,17 @@
+.result_box {
+  padding: 48px 32px;
+}
+
+.result_box .icon {
+  margin: 0 auto 24px;
+  display: block;
+  width: 72px;
+}
+
+.result_box .title {
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 24px;
+  line-height: 1.8;
+  text-align: center;
+  font-weight: normal;
+}

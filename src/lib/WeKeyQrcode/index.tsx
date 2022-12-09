@@ -1,9 +1,10 @@
 // WeKey 扫码
 import React, { useEffect, useState } from 'react';
-import { message, Result } from 'antd';
+import { message } from 'antd';
 import axios from 'axios';
 import QRcode from 'qrcode';
-import { Spin } from '../../components/Spin'
+import Spin from '../../components/Spin';
+import Result from '../../components/Result';
 import 'antd/dist/antd.css';
 import './index.css';
 
@@ -176,7 +177,7 @@ const WeKeyQrcode = ({
           <p className="desc_tip">
             {resultData?.wekey_user ? (
               <>
-                <img className='icon' src={require('../../images/check.png')} alt="点击刷新" />
+                <img className='icon' src={require('../../images/success.png')} alt="点击刷新" />
                 <span>{resultData.wekey_user + '已扫码'}</span>
               </>
             ) : (
