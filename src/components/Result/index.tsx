@@ -9,7 +9,7 @@ interface ResultProps {
 const Result = ({ status, title }: ResultProps) => {
   return (
     <div className='result_box'>
-      <img className='icon' src={status == 'success' ? require('../../images/success.png') : require('../../images/error.png')} alt="" />
+      <img className='icon' src={status == 'success' ? require('../../lib/images/success.png') : require('../../lib/images/error.png')} alt="" />
       <h3 className='title'>{title}</h3>
     </div>
   )

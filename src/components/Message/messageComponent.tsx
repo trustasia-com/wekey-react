@@ -41,8 +41,8 @@ const MessageComponent = (_: any, ref: any) => {
       >
         {
           item.type == 'success' ?
-            <img className='icon' src={require('../../images/success.png')} alt="" /> :
-            <img className='icon' src={require('../../images/error.png')} alt="" />
+            <img className='icon' src={require('../../lib/images/success.png')} alt="" /> :
+            <img className='icon' src={require('../../lib/images/error.png')} alt="" />
         }
         <span>{item.content}</span>
       </div>

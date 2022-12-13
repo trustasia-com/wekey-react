@@ -14,7 +14,7 @@ const Spin = (props: SpinProps) => {
       {
         props.spinning &&
         <div className='spin_mask_box'>
-          <img className='loading_icon' src={require('../../images/loading.png')} alt={props.tip} />
+          <img className='loading_icon' src={require('../../lib/images/loading.png')} alt={props.tip} />
           {props.tip && <p className='loading_tip'>{props.tip}</p>}
         </div>
       }
