@@ -11,7 +11,7 @@ yarn add @trustasia/wekey-qr-react
 ```demo
 import WeKeyQrcode from '@trustasia/wekey-qr-react';
 // css 文件中引入
-@import '@trustasia/wekey-qr-react/dist/wekey-react.cjs.development.css';
+@import '@trustasia/wekey-qr-react/dist/wekey-qr-react.cjs.development.css';
 
 <WeKeyQrcode
   getImgApi='/ta-demo/wekey/register/qrcode'
