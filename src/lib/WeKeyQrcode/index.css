@@ -13,6 +13,7 @@
 .wekey_qrcode_box .desc_tip .icon {
   margin-right: 4px;
   width: 16px;
+  height: 16px;
 }
 
 .wekey_qrcode_box .ewm_box {
@@ -50,6 +51,7 @@
 .wekey_qrcode_box .ewm_box .mask_box .icon {
   margin-bottom: 8px;
   width: 40px;
+  height: 40px;
 }
 
 .wekey_qrcode_box .ewm_box .mask_box p {

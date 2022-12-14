@@ -12,10 +12,13 @@
   pointer-events: all;
   animation: moveIn 0.3s;
 }
-.message_box .icon{
+
+.message_box .icon {
   width: 16px;
+  height: 16px;
   margin-right: 8px;
 }
+
 @keyframes moveIn {
   0% {
     top: 0;
@@ -27,4 +30,3 @@
     opacity: 1;
   }
 }
-

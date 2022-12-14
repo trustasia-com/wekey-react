@@ -54,12 +54,12 @@ const WeKeyQrcode = ({
     setImgLoading(true);
     fetch(`${getImgApi}`, {
       method: 'POST',
-      body: JSON.stringify({...ewmParams}),
+      body: JSON.stringify({ ...ewmParams }),
       headers: {
         'Content-Type': 'application/json',
       },
     })
-    .then((res)=>res.json())
+      .then((res) => res.json())
       .then((res: any) => {
         setImgLoading(false);
         if (res?.code == 0) {
@@ -107,7 +107,7 @@ const WeKeyQrcode = ({
         'Content-Type': 'application/json',
       },
     })
-    .then((res)=>res.json())
+      .then((res) => res.json())
       .then((res: any) => {
         if (res?.code == 0) {
           if (
@@ -172,8 +172,13 @@ const WeKeyQrcode = ({
             {isOut && (
               <div className="mask_box" onClick={() => reloadEwm()}>
                 <Spin spinning={imgLoading} tip="加载中...">
-                  <img className='icon' src={reloadImg} alt="点击刷新" />
-                  <p>超时，点击刷新</p>
+                  {
+                    !imgLoading &&
+                    <>
+                      <img className='icon' src={reloadImg} alt="点击刷新" />
+                      <p>超时，点击刷新</p>
+                    </>
+                  }
                 </Spin>
               </div>
             )}
