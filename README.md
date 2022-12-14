@@ -1,17 +1,17 @@
 # WeKey扫码组件使用说明
 
 ``` install
-npm i @trustasia/wekey-react 或
+npm i @trustasia/wekey-qr-react 或
 
-yarn add @trustasia/wekey-react 
+yarn add @trustasia/wekey-qr-react 
 ```
 
 ## 使用示例
 
 ```demo
-import { WeKeyQrcode } from '@trustasia/wekey-react';
+import WeKeyQrcode from '@trustasia/wekey-qr-react';
 // css 文件中引入
-@import '@trustasia/wekey-react/dist/wekey-react.cjs.development.css';
+@import '@trustasia/wekey-qr-react/dist/wekey-react.cjs.development.css';
 
 <WeKeyQrcode
   getImgApi='/ta-demo/wekey/register/qrcode'
