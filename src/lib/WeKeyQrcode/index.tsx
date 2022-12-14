@@ -62,7 +62,6 @@ const WeKeyQrcode = ({
       .then((res) => res.json())
       .then((res: any) => {
         setImgLoading(false);
-        console.log(res);
         if (res?.code == 0) {
           QRcode.toDataURL(res?.data?.url, {
             type: 'image/png', //类型
@@ -160,13 +159,14 @@ const WeKeyQrcode = ({
 
   return (
     <div className='wekey_qrcode_box'>
-      {showResult && (
+      {(resultData &&
+        (resultData.status == 'success' || resultData.status == 'fail')) &&
+        showResult ? (
         <Result
           status={resultData?.status === 'success' ? 'success' : 'error'}
           title={resultData?.status === 'success' ? '添加成功' : '添加失败'}
         />
-      )}
-      {!showResult && (
+      ) :
         <>
           {tip && <p className="tip">{tip}</p>}
           <div className="ewm_box">
@@ -198,7 +198,7 @@ const WeKeyQrcode = ({
             )}
           </p>
         </>
-      )}
+      }
     </div>
   );
 };
