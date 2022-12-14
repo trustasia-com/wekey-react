@@ -61,38 +61,32 @@ const WeKeyQrcode = ({
     })
     .then((res)=>res.json())
       .then((res: any) => {
-        console.log('res',res)
-        if (res.ok) {
-          setImgLoading(false);
-          console.log(res);
-          if (res?.data?.code == 0) {
-            QRcode.toDataURL(res?.data?.data?.url, {
-              type: 'image/png', //类型
-              quality: 0.5, //图片质量A Number between 0 and 1
-              width: 160, //高度
-              height: 160, //宽度
-              errorCorrectionLevel: 'L', //容错率
-              margin: 1, //外边距
-              color: {
-                dark: '#000000', //前景色
-                light: '#ffffff', //背景色
-              },
-            })
-              .then((imgData: any) => {
-                getqrResult(res?.data?.data);
-                setQrImgData({
-                  ...(res?.data?.data || {}),
-                  imgUrl: imgData,
-                });
-              })
-              .catch((err: any) => {
-                console.log(err);
+        setImgLoading(false);
+        if (res?.code == 0) {
+          QRcode.toDataURL(res?.data?.url, {
+            type: 'image/png', //类型
+            quality: 0.5, //图片质量A Number between 0 and 1
+            width: 160, //高度
+            height: 160, //宽度
+            errorCorrectionLevel: 'L', //容错率
+            margin: 1, //外边距
+            color: {
+              dark: '#000000', //前景色
+              light: '#ffffff', //背景色
+            },
+          })
+            .then((imgData: any) => {
+              getqrResult(res?.data);
+              setQrImgData({
+                ...(res?.data || {}),
+                imgUrl: imgData,
               });
-          } else {
-            message.error(res?.data?.error);
-          }
+            })
+            .catch((err: any) => {
+              console.log(err);
+            });
         } else {
-          message.error(res.statusText || '服务器内部错误，请联系管理员')
+          message.error(res?.error);
         }
       })
       .catch(err => {
@@ -107,48 +101,45 @@ const WeKeyQrcode = ({
   // 获取二维码扫码结果
   const getqrResult = async (data: any) => {
     clearTimeout(timer);
-    await fetch(`${getQrcodeResultApi}?msg_id=${data?.url.substr(data.url.indexOf('#') + 1)}`, {
+    fetch(`${getQrcodeResultApi}?msg_id=${data?.url.substr(data.url.indexOf('#') + 1)}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       },
     })
+    .then((res)=>res.json())
       .then((res: any) => {
-        if (res.ok) {
-          if (res?.data?.code == 0) {
-            if (
-              res?.data?.data.status === 'init' ||
-              res?.data?.data?.status === 'bind'
-            ) {
-              setIsOut(false);
-              timer = setTimeout(() => {
-                if (data?.expires_at * 1000 - new Date().getTime() < 0) {
-                  setIsOut(true);
-                  clearTimeout(timer);
-                  return;
-                }
-                getqrResult(data);
-              }, (timeDelay ? (timeDelay < 1 ? 1 : timeDelay) : 3) * 1000);
-            }
-            setResultData(res?.data?.data);
-            if (res?.data?.data?.status == 'success') {
-              clearTimeout(timer);
-              if (successCallback) successCallback(res?.data?.data);
-            }
-            if (
-              res?.data?.data?.status == 'fail' ||
-              res?.data?.data?.status == 'timeout'
-            ) {
-              setIsOut(true);
-              message.error(res?.data?.data?.error || '认证失败');
-              clearTimeout(timer);
-            }
-          } else {
+        if (res?.code == 0) {
+          if (
+            res?.data.status === 'init' ||
+            res?.data?.status === 'bind'
+          ) {
+            setIsOut(false);
+            timer = setTimeout(() => {
+              if (data?.expires_at * 1000 - new Date().getTime() < 0) {
+                setIsOut(true);
+                clearTimeout(timer);
+                return;
+              }
+              getqrResult(data);
+            }, (timeDelay ? (timeDelay < 1 ? 1 : timeDelay) : 3) * 1000);
+          }
+          setResultData(res?.data);
+          if (res?.data?.status == 'success') {
             clearTimeout(timer);
-            message.error(res?.data?.error);
+            if (successCallback) successCallback(res?.data);
+          }
+          if (
+            res?.data?.status == 'fail' ||
+            res?.data?.status == 'timeout'
+          ) {
+            setIsOut(true);
+            message.error(res?.data?.error || '认证失败');
+            clearTimeout(timer);
           }
         } else {
-          message.error(res.statusText || '服务器内部错误，请联系管理员')
+          clearTimeout(timer);
+          message.error(res?.error);
         }
       })
       .catch((err: any) => {
