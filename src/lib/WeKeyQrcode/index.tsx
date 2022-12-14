@@ -62,6 +62,7 @@ const WeKeyQrcode = ({
       .then((res) => res.json())
       .then((res: any) => {
         setImgLoading(false);
+        console.log(res);
         if (res?.code == 0) {
           QRcode.toDataURL(res?.data?.url, {
             type: 'image/png', //类型
@@ -171,15 +172,15 @@ const WeKeyQrcode = ({
           <div className="ewm_box">
             {isOut && (
               <div className="mask_box" onClick={() => reloadEwm()}>
-                <Spin spinning={imgLoading} tip="加载中...">
-                  {
-                    !imgLoading &&
+                {
+                  !imgLoading ?
                     <>
                       <img className='icon' src={reloadImg} alt="点击刷新" />
                       <p>超时，点击刷新</p>
-                    </>
-                  }
-                </Spin>
+                    </> :
+                    <Spin spinning={imgLoading} tip="加载中...">
+                    </Spin>
+                }
               </div>
             )}
             {qrImgData && (
