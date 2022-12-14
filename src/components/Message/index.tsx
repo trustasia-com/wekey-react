@@ -7,11 +7,13 @@ class Msg {
   refs: any;
 
   constructor() {
-    let myRef = { current: '' };
-    const div = document.createElement('div')
-    ReactDOM.render(<Message ref={myRef} />, div)
-    document.body.append(div);
-    this.refs = myRef;
+    if (typeof window !== 'undefined') {
+      let myRef = { current: '' };
+      const div = document.createElement('div')
+      ReactDOM.render(<Message ref={myRef} />, div)
+      document.body.append(div);
+      this.refs = myRef;
+    }
   }
   error(msg: string) {
     this.refs.current.create({
