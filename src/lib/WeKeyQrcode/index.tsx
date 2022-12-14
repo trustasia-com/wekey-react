@@ -54,7 +54,7 @@ const WeKeyQrcode = ({
     setImgLoading(true);
     await fetch(`${getImgApi}`, {
       method: 'POST',
-      body: ewmParams,
+      body: JSON.stringify({...ewmParams}),
       headers: {
         'Content-Type': 'application/json',
       },
