@@ -62,6 +62,7 @@ const WeKeyQrcode = ({
       .then((res: any) => {
         if (res.ok) {
           setImgLoading(false);
+          console.log(res);
           if (res?.data?.code == 0) {
             QRcode.toDataURL(res?.data?.data?.url, {
               type: 'image/png', //类型
