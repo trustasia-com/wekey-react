@@ -5,6 +5,8 @@ import Spin from '../../components/Spin';
 import Result from '../../components/Result';
 import message from '../../components/Message'
 import './index.css';
+import reloadImg from '../../images/reload.png';
+import successImg from '../../images/success.png';
 
 let timer: any;
 type WeKeyQrcodeProps = {
@@ -176,7 +178,7 @@ const WeKeyQrcode = ({
             {isOut && (
               <div className="mask_box" onClick={() => reloadEwm()}>
                 <Spin spinning={imgLoading} tip="加载中...">
-                  <img className='icon' src={require('../images/reload.png')} alt="点击刷新" />
+                  <img className='icon' src={reloadImg} alt="点击刷新" />
                   <p>超时，点击刷新</p>
                 </Spin>
               </div>
@@ -188,7 +190,7 @@ const WeKeyQrcode = ({
           <p className="desc_tip">
             {resultData?.wekey_user ? (
               <>
-                <img className='icon' src={require('../images/success.png')} alt="点击刷新" />
+                <img className='icon' src={successImg} alt="点击刷新" />
                 <span>{resultData.wekey_user + '已扫码'}</span>
               </>
             ) : (

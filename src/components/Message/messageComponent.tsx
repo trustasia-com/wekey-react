@@ -1,5 +1,7 @@
 import React, { forwardRef, useImperativeHandle, useState } from 'react';
 import './messageComponent.css';
+import successImg from '../../images/success.png';
+import errorImg from '../../images/error.png';
 
 const MessageComponent = (_: any, ref: any) => {
   //将以下方法暴露给父组件
@@ -41,8 +43,8 @@ const MessageComponent = (_: any, ref: any) => {
       >
         {
           item.type == 'success' ?
-            <img className='icon' src={require('../../lib/images/success.png')} alt="" /> :
-            <img className='icon' src={require('../../lib/images/error.png')} alt="" />
+            <img className='icon' src={successImg} alt="" /> :
+            <img className='icon' src={errorImg} alt="" />
         }
         <span>{item.content}</span>
       </div>

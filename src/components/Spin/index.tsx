@@ -1,6 +1,7 @@
 // Spin 组件
 import React from 'react';
 import './index.css';
+import loadingImg from '../../images/loading.png';
 
 interface SpinProps {
   children?: any;
@@ -14,7 +15,7 @@ const Spin = (props: SpinProps) => {
       {
         props.spinning &&
         <div className='spin_mask_box'>
-          <img className='loading_icon' src={require('../../lib/images/loading.png')} alt={props.tip} />
+          <img className='loading_icon' src={loadingImg} alt={props.tip} />
           {props.tip && <p className='loading_tip'>{props.tip}</p>}
         </div>
       }

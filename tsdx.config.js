@@ -39,7 +39,8 @@ module.exports = {
     );
     // 截至2021年3月: 必须使用 unshift 添加 image 插件, 否则报错
     config.plugins.unshift(image({
-      svg: true
+      svg: true,
+      include: ['**/*.png', '**/*.jpg'],
     }));
     return config;
   },
