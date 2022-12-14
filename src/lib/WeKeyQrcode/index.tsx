@@ -52,14 +52,16 @@ const WeKeyQrcode = ({
   // 获取扫码登录的二维码
   const getQRcodeFn = async () => {
     setImgLoading(true);
-    await fetch(`${getImgApi}`, {
+    fetch(`${getImgApi}`, {
       method: 'POST',
       body: JSON.stringify({...ewmParams}),
       headers: {
         'Content-Type': 'application/json',
       },
     })
+    .then((res)=>res.json())
       .then((res: any) => {
+        console.log('res',res)
         if (res.ok) {
           setImgLoading(false);
           console.log(res);
