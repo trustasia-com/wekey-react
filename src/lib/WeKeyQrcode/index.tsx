@@ -110,6 +110,7 @@ const WeKeyQrcode = ({
       .then((res) => res.json())
       .then((res: any) => {
         if (res?.code == 0) {
+          setResultData(res?.data);
           if (
             res?.data.status === 'init' ||
             res?.data?.status === 'bind'
@@ -124,7 +125,6 @@ const WeKeyQrcode = ({
               getqrResult(data);
             }, (timeDelay ? (timeDelay < 1 ? 1 : timeDelay) : 3) * 1000);
           }
-          setResultData(res?.data);
           if (res?.data?.status == 'success') {
             clearTimeout(timer);
             if (successCallback) successCallback(res?.data);
