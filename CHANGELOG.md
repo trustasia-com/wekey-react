@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.3](https://github.com/trustasia-com/wekey-react/compare/v1.0.2...v1.0.3) (2023-02-17)
+
+
+### Bug Fixes
+
+* 微调 ([cfd8cc7](https://github.com/trustasia-com/wekey-react/commit/cfd8cc70a0c0a19544b9953a99e95b7611cc1139))
+
 ## 1.1.0 (2022-12-14)
 
 
