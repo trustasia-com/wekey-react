@@ -101,7 +101,7 @@ const WeKeyQrcode = ({
   // 获取二维码扫码结果
   const getqrResult = async (data: any) => {
     clearTimeout(timer);
-    fetch(`${getQrcodeResultApi}?msg_id=${data?.url.substr(data.url.indexOf('#') + 1)}`, {
+    fetch(`${getQrcodeResultApi}?msg_id=${data?.msg_id || data?.url.substr(data.url.indexOf('#') + 1)}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
