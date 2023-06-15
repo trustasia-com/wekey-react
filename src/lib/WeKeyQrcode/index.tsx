@@ -117,7 +117,7 @@ const WeKeyQrcode = ({
           ) {
             setIsOut(false);
             timer = setTimeout(() => {
-              if (data?.expires_at * 1000 - new Date().getTime() < 0) {
+              if (data?.expired_at * 1000 - new Date().getTime() < 0) {
                 setIsOut(true);
                 clearTimeout(timer);
                 return;
