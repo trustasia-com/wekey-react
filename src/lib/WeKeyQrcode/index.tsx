@@ -188,10 +188,10 @@ const WeKeyQrcode = ({
             )}
           </div>
           <p className="desc_tip">
-            {resultData?.wekey_user ? (
+            {resultData?.wekey_nickname ? (
               <>
                 <img className='icon' src={successImg} alt="点击刷新" />
-                <span>{resultData.wekey_user + '已扫码'}</span>
+                <span>{resultData.wekey_nickname + '已扫码'}</span>
               </>
             ) : (
               '使用WeKey扫码认证'
