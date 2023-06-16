@@ -160,11 +160,11 @@ const WeKeyQrcode = ({
   return (
     <div className='wekey_qrcode_box'>
       {(resultData &&
-        (resultData.status == 'success' || resultData.status == 'fail')) &&
+        (resultData.status == 'success' || resultData.status == 'fail' || resultData.status == 'refuse')) &&
         showResult ? (
         <Result
           status={resultData?.status === 'success' ? 'success' : 'error'}
-          title={resultData?.status === 'success' ? '添加成功' : '添加失败'}
+          title={resultData?.status === 'success' ? '添加成功' : (resultData?.status === 'fail' ? '添加失败' : '用户已拒绝')}
         />
       ) :
         <>
