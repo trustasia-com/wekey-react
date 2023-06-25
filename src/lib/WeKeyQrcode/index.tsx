@@ -129,12 +129,17 @@ const WeKeyQrcode = ({
             clearTimeout(timer);
             if (successCallback) successCallback(res?.data);
           }
+          if (!showResult && res?.data?.status == 'refuse') {
+            // message.error(res?.data?.error_msg || '用户已拒绝失败');
+            clearTimeout(timer);
+            reloadEwm();
+          }
           if (
             res?.data?.status == 'fail' ||
             res?.data?.status == 'timeout'
           ) {
             setIsOut(true);
-            message.error(res?.data?.error || '认证失败');
+            message.error(res?.data?.error_msg || '认证失败');
             clearTimeout(timer);
           }
         } else {
